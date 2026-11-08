@@ -21,7 +21,7 @@
         if (!video) return;
         if (isActive) {
           video.preload = 'auto';
-          video.play().catch(() => {});
+          video.play().catch(() => { });
         } else {
           video.pause();
         }
@@ -54,72 +54,72 @@
     }
 
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) video.play().catch(() => {});
+      if (entry.isIntersecting) video.play().catch(() => { });
       else video.pause();
     });
     observer.observe(video);
   };
 
-const initProductionsSnap = () => {
-  const section = $('#original-productions');
-  const scroller = $('.productions-scroller');
-  if (!section || !scroller) return;
+  const initProductionsSnap = () => {
+    const section = $('#original-productions');
+    const scroller = $('.productions-scroller');
+    if (!section || !scroller) return;
 
-  let lastY = window.scrollY;
-  let dir = 0; // 1 = down, -1 = up
-  let snapping = false;
-  let timer;
-  let touchStartY = 0;
+    let lastY = window.scrollY;
+    let dir = 0; // 1 = down, -1 = up
+    let snapping = false;
+    let timer;
+    let touchStartY = 0;
 
-  const check = () => {
-    if (snapping) return;
+    const check = () => {
+      if (snapping) return;
 
-    const vh = window.innerHeight;
-    const r = section.getBoundingClientRect();
-    const visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
-    if (visible <= vh * 0.1 || Math.abs(r.top) < 2) return;
+      const vh = window.innerHeight;
+      const r = section.getBoundingClientRect();
+      const visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+      if (visible <= vh * 0.1 || Math.abs(r.top) < 2) return;
 
-    const fromTop = r.top > 0 && dir === 1;
-    const fromBottom = r.top < 0 && dir === -1;
-    if (!fromTop && !fromBottom) return;
+      const fromTop = r.top > 0 && dir === 1;
+      const fromBottom = r.top < 0 && dir === -1;
+      if (!fromTop && !fromBottom) return;
 
-    snapping = true;
-    section.scrollIntoView({
-      behavior: prefersReducedMotion ? 'auto' : 'smooth',
-      block: 'start'
-    });
-    setTimeout(() => { snapping = false; }, 700);
+      snapping = true;
+      section.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: 'start'
+      });
+      setTimeout(() => { snapping = false; }, 700);
+    };
+
+    const schedule = () => {
+      clearTimeout(timer);
+      timer = setTimeout(check, 90);
+    };
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y !== lastY) dir = y > lastY ? 1 : -1;
+      lastY = y;
+      schedule();
+    }, { passive: true });
+
+    scroller.addEventListener('wheel', (e) => {
+      dir = e.deltaY > 0 ? 1 : -1;
+      schedule();
+    }, { passive: true });
+
+    scroller.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    scroller.addEventListener('touchend', (e) => {
+      const endY = e.changedTouches[0].clientY;
+      if (Math.abs(endY - touchStartY) > 5) dir = touchStartY > endY ? 1 : -1;
+      schedule();
+    }, { passive: true });
+
+    scroller.addEventListener('scroll', schedule, { passive: true });
   };
-
-  const schedule = () => {
-    clearTimeout(timer);
-    timer = setTimeout(check, 90);
-  };
-
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y !== lastY) dir = y > lastY ? 1 : -1;
-    lastY = y;
-    schedule();
-  }, { passive: true });
-
-  scroller.addEventListener('wheel', (e) => {
-    dir = e.deltaY > 0 ? 1 : -1;
-    schedule();
-  }, { passive: true });
-
-  scroller.addEventListener('touchstart', (e) => {
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  scroller.addEventListener('touchend', (e) => {
-    const endY = e.changedTouches[0].clientY;
-    if (Math.abs(endY - touchStartY) > 5) dir = touchStartY > endY ? 1 : -1;
-    schedule();
-  }, { passive: true });
-
-  scroller.addEventListener('scroll', schedule, { passive: true });
-};
 
   /* ---------- Productions scroller: release scroll at edges ---------- */
 
@@ -256,15 +256,46 @@ const initProductionsSnap = () => {
   /* ---------- Expertise scroller: keyboard support ---------- */
 
   const initExpertiseScroller = () => {
-    const scroller = $('.expertise-scroller');
-    if (!scroller) return;
+    const section = document.querySelector('.expertise');
+    if (!section) return;
 
-    scroller.setAttribute('tabindex', '0');
-    scroller.addEventListener('keydown', (event) => {
-      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-      event.preventDefault();
-      const direction = event.key === 'ArrowRight' ? 1 : -1;
-      scroller.scrollBy({ left: direction * scroller.clientWidth, behavior: 'smooth' });
+    const slides = [...section.querySelectorAll('.expertise-slide')];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      if (reduced) return;
+      const vh = window.innerHeight;
+      slides.forEach((slide, i) => {
+        const next = slides[i + 1];
+        if (!next) return;
+        const p = Math.min(1, Math.max(0, 1 - next.getBoundingClientRect().top / vh));
+        slide.style.transform = `scale(${1 - p * 0.12})`;
+        slide.style.filter = `blur(${p * 10}px) brightness(${1 - p * 0.5})`;
+      });
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+
+    section.querySelectorAll('[data-expertise-nav]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const rect = section.getBoundingClientRect();
+        const top = window.scrollY + rect.top;
+        const bottom = window.scrollY + rect.bottom;
+        const y = btn.dataset.expertiseNav === 'up'
+          ? top - window.innerHeight   // section top at bottom of screen
+          : bottom;                    // section bottom at top of screen
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      });
     });
   };
 
@@ -275,8 +306,8 @@ const initProductionsSnap = () => {
     initHeroVideo();
     initProductionsScroller();
     initDialogs();
-    initCountUp();  
-    initProductionsSnap();   
+    initCountUp();
+    initProductionsSnap();
     initMarquee();
     initExpertiseScroller();
   };
