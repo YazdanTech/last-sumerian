@@ -65,18 +65,49 @@
 
     <!-- HERO -->
     <section class="section section-hero" id="hero" data-stage="hero" aria-labelledby="hero-title">
-      <div class="hero-video-wrap">
-        <video class="hero-video" autoplay muted loop playsinline poster="/assets/images/hero-poster.jpg">
-          <source src="/assets/videos/video (3).mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="hero-gradient" aria-hidden="true"></div>
-      <div class="hero-content">
-        <h1 class="hero-title" id="hero-title">Last Sumerian</h1>
-        <p class="hero-tagline">An independent film studio building original cinematic worlds.</p>
+      <div class="hero-track" data-hero-track>
+        <div class="hero-stage" data-hero-stage>
+
+          <div class="hero-video-wrap">
+            <video class="hero-video" muted playsinline preload="auto" disablepictureinpicture
+                  poster="/assets/images/hero-poster.jpg" data-hero-video>
+              <source src="/assets/videos/hero/hero-mobile.mp4" type="video/mp4" media="(max-width: 700px)">
+              <source src="/assets/videos/hero/hero.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="hero-gradient" aria-hidden="true"></div>
+
+          <!-- 0s → 4s -->
+          <div class="scene scene-1" data-scene="1">
+            <p class="scene-text" data-split>Every great story begins as a world.</p>
+          </div>
+
+          <!-- 8s → 14s -->
+          <div class="scene scene-2" data-scene="2" aria-hidden="true">
+            <p class="scene-text">Carved in clay.<br>Written in light.</p>
+          </div>
+
+          <!-- 22s → end -->
+          <div class="hero-content" data-hero-content>
+            <p class="hero-eyebrow" data-reveal>Premium independent film studio</p>
+            <h1 class="hero-title" id="hero-title" data-reveal data-title>
+              <span>Last</span> <span>Sumerian</span>
+            </h1>
+            <p class="hero-tagline" data-reveal>An independent film studio building original cinematic worlds.</p>
+            <p class="hero-sub" data-reveal>A creative development partner for the global entertainment industry.</p>
+            <div class="hero-actions" data-reveal data-actions>
+              <a class="btn btn-primary" href="#films">Our Films</a>
+              <a class="btn btn-ghost" href="#contact">Partner With Us</a>
+            </div>
+          </div>
+
+          <div class="scroll-hint" data-scroll-hint aria-hidden="true">
+            <span>Scroll</span><i></i>
+          </div>
+
+        </div>
       </div>
     </section>
-
     <!-- BETWEEN: hero to productions -->
     <!-- <div class="section-transition" data-stage="about-transition" aria-hidden="true"></div> -->
 
@@ -583,6 +614,7 @@
   </main>
 
   <script src="/index.js" defer></script>
+  <script src="/hero.js" defer></script>
 </body>
 
 </html>
