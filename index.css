@@ -734,7 +734,7 @@ h4 {
         gap: 1rem;
     }
 }
-
+/* 
 @media (prefers-reduced-motion: reduce) {
     .hero-track {
         height: auto;
@@ -750,7 +750,7 @@ h4 {
     .scroll-hint i {
         animation: none;
     }
-}
+} */
 
 /* ---------- Original Productions ---------- */
 
@@ -1958,7 +1958,7 @@ h4 {
 }
 
 /* ---------- Reduced Motion ---------- */
-
+/* 
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -1980,4 +1980,4 @@ h4 {
     .project-card {
         transition: none;
     }
-}
+} */
