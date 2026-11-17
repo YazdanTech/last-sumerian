@@ -10,7 +10,8 @@
   const actions = document.querySelector('[data-actions]');
   const hint = document.querySelector('[data-scroll-hint]');
 
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion = false;
+  // const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- helpers ---------- */
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));

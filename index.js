@@ -3,7 +3,8 @@
 
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prefersReducedMotion = false;
 
   /* ---------- Fixed stage background ---------- */
 
@@ -260,7 +261,8 @@
     if (!section) return;
 
     const slides = [...section.querySelectorAll('.expertise-slide')];
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduced = false;
     let ticking = false;
 
     const update = () => {
