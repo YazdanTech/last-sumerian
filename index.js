@@ -274,7 +274,7 @@
         if (!next) return;
         const p = Math.min(1, Math.max(0, 1 - next.getBoundingClientRect().top / vh));
         slide.style.transform = `scale(${1 - p * 0.12})`;
-        slide.style.filter = `blur(${p * 10}px) brightness(${1 - p * 0.5})`;
+        slide.style.filter = `brightness(${1 - p * 1})`;
       });
     };
 

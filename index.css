@@ -437,6 +437,7 @@ h4 {
 .section-hero {
     --sand: #f3e6c8;
     --gold: #d9a441;
+    padding: 0 ;
     --rust: #b05426;
     --serif: "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman", serif;
     --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -506,7 +507,7 @@ h4 {
     margin: 0;
     max-width: 16em;
     font-family: var(--font-family-special);
-    -webkit-text-stroke: 1px var(--color-primary-light);
+    -webkit-text-stroke: 1px var(--color-secondary);
     font-weight: 400;
     color: var(--color-overlay);
     line-height: 1.15;
@@ -531,7 +532,6 @@ h4 {
     display: inline-block;
     opacity: 0;
     transform: translateY(.45em);
-    filter: blur(10px);
     animation: wordIn 1.4s cubic-bezier(.2, .7, .2, 1) forwards;
     animation-delay: calc(var(--i) * .13s + .25s);
 }
@@ -551,7 +551,7 @@ h4 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     text-align: center;
     padding: 0 1.5rem max(14svh, calc(env(safe-area-inset-bottom) + 2.5rem));
     gap: 1rem;
@@ -575,7 +575,7 @@ h4 {
     margin: 0;
     font-family: var(--serif);
     font-weight: 500;
-    font-size: clamp(2.8rem, 13vw, 7.5rem);
+    font-size: clamp(2rem, 10vw, 5.5rem);
     line-height: .95;
     text-transform: uppercase;
     letter-spacing: .1em;
@@ -1444,7 +1444,6 @@ h4 {
     right: -200px;
     border-radius: 50%;
     background: conic-gradient(from 0deg, transparent, var(--color-secondary), transparent 60%);
-    filter: blur(40px);
     opacity: .25;
 }
 
@@ -1802,9 +1801,6 @@ h4 {
         --orbit-size: 420px;
     }
 
-    .hero-content {
-        max-width: 640px;
-    }
 
     .stats-list {
         grid-template-columns: repeat(2, 1fr);
@@ -1916,6 +1912,7 @@ h4 {
             'cta orbit';
         align-content: center;
         justify-items: start;
+        border: 1px solid var(--color-secondary);
         column-gap: var(--space-8);
         padding: var(--space-7) max(var(--container-padding), calc((100vw - var(--container-max)) / 2));
         text-align: left;
@@ -1981,3 +1978,37 @@ h4 {
         transition: none;
     }
 } */
+
+
+
+.scene-text {
+    margin: 0;
+    max-width: 16em;
+    font-family: var(--font-family-special);
+    font-weight: 400;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: black;
+    -webkit-text-stroke: 1px var(--color-secondary);
+    text-shadow: 0 0 8px #00f0ff, 0 0 24px var(--color-secondary), 0 0 60px #7b2ff7;
+    animation: pulse 4s ease-in-out infinite alternate;
+}
+@keyframes pulse {
+    to { -webkit-text-stroke-color: var(--color-primary-light); text-shadow: 0 0 8px var(--color-secondary), 0 0 24px var(--color-primary-light), 0 0 60px #7b2ff7; }
+}
+
+.liquid-text {
+    margin: 0;
+    font-family: var(--font-family-head);
+    font-weight: 400;
+    line-height: 1.15;
+    text-wrap: balance;
+    -webkit-text-stroke: 1px #fff3b0;
+    color: transparent;
+    background: linear-gradient(110deg, #b8860b, #ffe27a, #fff8dc, #d4a017, #b8860b) 0 0 / 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: flow 7s linear infinite;
+    text-shadow: 0 2px 40px rgba(0, 0, 0, .65);
+}
+@keyframes flow { to { background-position: 300% 0; } }
