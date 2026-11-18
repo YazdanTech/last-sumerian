@@ -42,18 +42,28 @@
 
   <!-- Fixed background stage: layers swap as each section scrolls past -->
   <div class="stage-background" aria-hidden="true">
-    <div class="stage-layer stage-layer-video is-active" data-stage-for="hero">
+    <div class="stage-layer stage-layer-video is-active" data-stage-for="hero-transition">
       <video class="stage-media" muted loop playsinline preload="metadata"
         poster="./assets/images/planet nine background.png">
-        <source src="./assets/videos/video (3).mp4" type="video/mp4">
+        <source src="./assets/videos/39.1-invideo-seedance_2_0 (3).mp4" type="video/mp4">
       </video>
     </div>
-    <div class="stage-layer stage-layer-image" data-stage-for="about-transition">
-      <img class="stage-media" src="./assets/images/c9b6c05d96cc6a582f05fc61cbbb41c9.jpg" alt="" loading="lazy">
+    <div class="stage-layer stage-layer-video" data-stage-for="about-transition">
+      <!-- <img class="stage-media" src="./assets/images/c9b6c05d96cc6a582f05fc61cbbb41c9.jpg" alt="" loading="lazy"> -->
+      <video class="stage-media" muted loop playsinline preload="metadata"
+        poster="./assets/images/planet nine background.png">
+        <source src="./assets/videos/hf_20260731_123210_ba06cd73-b209-4095-bb86-d18632b7edec.mp4" type="video/mp4">
+      </video>
     </div>
-    <div class="stage-layer stage-layer-text" data-stage-for="development-transition">
+    <div class="stage-layer stage-layer-video is-active" data-stage-for="development-transition">
+      <video class="stage-media" muted loop playsinline preload="metadata"
+        poster="./assets/images/planet nine background.png">
+        <source src="./assets/videos/Seedance_2_Timeline_Promp...ly_while_remaining_hidden.mp4" type="video/mp4">
+      </video>
+    </div>
+    <!-- <div class="stage-layer stage-layer-text" data-stage-for="development-transition">
       <p class="stage-text">From an idea to an entire cinematic universe.</p>
-    </div>
+    </div> -->
     <div class="stage-layer stage-layer-video" data-stage-for="brands-transition">
       <video class="stage-media" muted loop playsinline preload="none" poster="./assets/images/stage-brands.jpg">
         <source src="./assets/videos/video (4).mp4" type="video/mp4">
@@ -70,7 +80,7 @@
 
           <div class="hero-video-wrap">
             <video class="hero-video" muted playsinline preload="auto" disablepictureinpicture
-                  poster="./assets/images/hero-poster.jpg" data-hero-video>
+              poster="./assets/images/hero-poster.jpg" data-hero-video>
               <source src="./assets/videos/hero/hero-mobile.mp4" type="video/mp4" media="(max-width: 700px)">
               <source src="./assets/videos/hero/hero.mp4" type="video/mp4">
             </video>
@@ -96,7 +106,7 @@
             <p class="hero-tagline" data-reveal>An independent film studio building original cinematic worlds.</p>
             <p class="hero-sub" data-reveal>A creative development partner for the global entertainment industry.</p>
             <div class="hero-actions" data-reveal data-actions>
-   <div class="special-btn-container">
+              <div class="special-btn-container">
                 <a class="button button-primary" href="https://www.youtube.com/@meysamderees" target="_blank"
                   rel="noopener">Watch on YouTube</a>
                 <div class="first-line"></div>
@@ -121,7 +131,7 @@
       </div>
     </section>
     <!-- BETWEEN: hero to productions -->
-    <!-- <div class="section-transition" data-stage="about-transition" aria-hidden="true"></div> -->
+    <div class="section-transition" data-stage="hero-transition" aria-hidden="true"></div>
 
     <!-- ORIGINAL PRODUCTIONS -->
     <section class="section section-productions" id="original-productions" aria-labelledby="productions-title">
@@ -193,7 +203,7 @@
     </section>
 
     <!-- BETWEEN: productions to about -->
-    <!-- <div class="section-transition" data-stage="about-transition" aria-hidden="true"></div> -->
+    <div class="section-transition" data-stage="about-transition" aria-hidden="true"></div>
 
     <!-- ABOUT THE STUDIO -->
     <section class="section section-about" id="about" aria-labelledby="about-title">
@@ -358,16 +368,16 @@
               visual identities.</p>
             <ul class="expertise-orbit">
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/character-1-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/character-1.jpg" alt="Character design concept 1"
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Character design concept 1"
                     loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/character-2-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/character-2.jpg" alt="Character design concept 2"
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Character design concept 2"
                     loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/character-3-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/character-3.jpg" alt="Character design concept 3"
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Character design concept 3"
                     loading="lazy"></button></li>
             </ul>
             <a class="button button-primary expertise-cta" href="./contact/?service=character-design">Build Your
@@ -383,14 +393,14 @@
               and digital entertainment.</p>
             <ul class="expertise-orbit">
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/ip-1-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/ip-1.jpg" alt="Original IP concept 1" loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Original IP concept 1" loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/ip-2-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/ip-2.jpg" alt="Original IP concept 2" loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Original IP concept 2" loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/ip-3-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/ip-3.jpg" alt="Original IP concept 3" loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Original IP concept 3" loading="lazy"></button></li>
             </ul>
             <a class="button button-primary expertise-cta" href="./contact/?service=original-ip">Begin Your IP Creation
               Journey</a>
@@ -405,16 +415,16 @@
               and story treatments.</p>
             <ul class="expertise-orbit">
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/story-1-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/story-1.jpg" alt="Story development concept 1"
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Story development concept 1"
                     loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/story-2-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/story-2.jpg" alt="Story development concept 2"
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Story development concept 2"
                     loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/story-3-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/story-3.jpg" alt="Story development concept 3"
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Story development concept 3"
                     loading="lazy"></button></li>
             </ul>
             <a class="button button-primary expertise-cta" href="./contact/?service=story-development">Develop Your
@@ -430,14 +440,14 @@
               production designs.</p>
             <ul class="expertise-orbit">
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/visual-1-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/visual-1.jpg" alt="Concept art 1" loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Concept art 1" loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/visual-2-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/visual-2.jpg" alt="Concept art 2" loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Concept art 2" loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/expertise/visual-3-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/visual-3.jpg" alt="Concept art 3" loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"><img class="orbit-image"
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Concept art 3" loading="lazy"></button></li>
             </ul>
             <a class="button button-primary expertise-cta" href="./contact/?service=visual-development">Visualize Your
               Idea</a>
@@ -453,13 +463,16 @@
             <ul class="expertise-orbit">
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
                   data-full-src="./assets/images/expertise/universe-1-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/universe-1.jpg" alt="Universe concept 1" loading="lazy"></button></li>
+                    src="./assets/images/expertise/universe-1.jpg" alt="Universe concept 1" loading="lazy"></button>
+              </li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
                   data-full-src="./assets/images/expertise/universe-2-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/universe-2.jpg" alt="Universe concept 2" loading="lazy"></button></li>
+                    src="./assets/images/expertise/universe-2.jpg" alt="Universe concept 2" loading="lazy"></button>
+              </li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
                   data-full-src="./assets/images/expertise/universe-3-full.jpg"><img class="orbit-image"
-                    src="./assets/images/expertise/universe-3.jpg" alt="Universe concept 3" loading="lazy"></button></li>
+                    src="./assets/images/expertise/universe-3.jpg" alt="Universe concept 3" loading="lazy"></button>
+              </li>
             </ul>
             <a class="button button-primary expertise-cta" href="./contact/?service=universe-development">Build Your
               Universe</a>

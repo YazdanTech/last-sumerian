@@ -157,6 +157,9 @@ h4 {
 .section {
     position: relative;
     padding: var(--section-padding) var(--container-padding);
+    border-top: 1px solid var(--color-secondary-light);
+    border-bottom: 1px solid var(--color-secondary-light);
+    box-shadow:0px 0px 50px var(--color-bg);
 }
 
 .section-title {
@@ -395,7 +398,6 @@ h4 {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--color-overlay);
 }
 
 .stage-layer-text {
@@ -1219,6 +1221,7 @@ h4 {
     text-align: center;
     background: var(--color-bg);
     transform-origin: center center;
+    box-shadow: 0 20px 50px var(--color-primary-light);
     will-change: transform, filter;
 }
 
@@ -1912,7 +1915,7 @@ h4 {
             'cta orbit';
         align-content: center;
         justify-items: start;
-        border: 1px solid var(--color-secondary);
+        border: 1px solid transparent;
         column-gap: var(--space-8);
         padding: var(--space-7) max(var(--container-padding), calc((100vw - var(--container-max)) / 2));
         text-align: left;

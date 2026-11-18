@@ -255,7 +255,6 @@
   };
 
   /* ---------- Expertise scroller: keyboard support ---------- */
-
   const initExpertiseScroller = () => {
     const section = document.querySelector('.expertise');
     if (!section) return;
@@ -275,6 +274,10 @@
         const p = Math.min(1, Math.max(0, 1 - next.getBoundingClientRect().top / vh));
         slide.style.transform = `scale(${1 - p * 0.12})`;
         slide.style.filter = `brightness(${1 - p * 1})`;
+        // border: transparent first, fades to primary-light as next slide covers it
+        slide.style.border = "1px solid color-mix(in srgb, var(--color-secondary) " + (p * 100) + "%, transparent)";
+        // next (current) slide casts a shadow onto the previous slide
+        next.style.boxShadow = `0 30px 50px var(--color-primary-light)`;
       });
     };
 
@@ -300,7 +303,6 @@
       });
     });
   };
-
   /* ---------- Init ---------- */
 
   const init = () => {
