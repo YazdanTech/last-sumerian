@@ -45,7 +45,6 @@
     const p1 = easeInOut(seg(t, ...T.s1Out));
     const col = p1 < .5 ? mix(SAND, GOLD, p1 * 2) : mix(GOLD, RUST, (p1 - .5) * 2);
     scene1.style.opacity = 1 - p1;
-    scene1.style.filter = `blur(${p1 * 14}px)`;
     scene1.style.transform = `translate3d(0, ${-p1 * 24}px, 0) scale(${1 + p1 * .06})`;
     scene1.style.color = `rgb(${col})`;
     hide(scene1, p1 >= 1);
@@ -56,7 +55,6 @@
     const scale = (0.06 + 0.94 * inn) * (1 + out * 8);
     const op = clamp(inn * 2.4) * (1 - seg(t, 13.0, 14.0));
     scene2.style.opacity = op;
-    scene2.style.filter = `blur(${(1 - inn) * 10 + out * 10}px)`;
     scene2.style.transform = `scale(${scale})`;
     hide(scene2, op < .002);
 
@@ -66,7 +64,6 @@
       const p = easeOut(seg(t, s, s + T.reveal.dur));
       el.style.opacity = p;
       el.style.transform = `translate3d(0, ${(1 - p) * 28}px, 0)`;
-      el.style.filter = p < 1 ? `blur(${(1 - p) * 10}px)` : 'none';
       if (el === title) el.style.letterSpacing = `${(0.34 - 0.22 * p).toFixed(3)}em`;
     });
     actions.inert = seg(t, T.reveal.start + 4 * T.reveal.stagger, 26) < .6;

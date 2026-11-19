@@ -445,6 +445,7 @@ h4 {
     --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     position: relative;
     background: #000;
+    border-top: none;
     color: #fff;
 }
 
@@ -1204,6 +1205,10 @@ h4 {
 .expertise-scroller {
     display: block;
     /* no overflow here, it breaks sticky */
+}
+
+.expertise-scroller:first-child {
+    border-top: none;
 }
 
 .expertise-slide {
@@ -1993,7 +1998,7 @@ h4 {
     text-wrap: balance;
     color: black;
     -webkit-text-stroke: 1px var(--color-secondary);
-    text-shadow: 0 0 8px #00f0ff, 0 0 24px var(--color-secondary), 0 0 60px #7b2ff7;
+    text-shadow: 0 0 8px #00f0ff, 0 0 24px var(--color-secondary), 0 0 30px #7b2ff7;
     animation: pulse 4s ease-in-out infinite alternate;
 }
 @keyframes pulse {
