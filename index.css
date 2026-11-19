@@ -40,11 +40,10 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.3);
 
-    --font-family-heading: 'Gilda Display', serif, sans-serif;
-    --font-family-body: 'Manrope', arial, sans-serif;
-    --font-family-mono: 'VT323', monospace;
-    --font-family-special: 'Audiowide', monospace;
-    --font-family-sumerian: 'Noto Sans Old Persian', monospace;
+    --font-family-heading: 'Gilda Display', serif;
+    --font-family-body: 'Manrope', Arial, sans-serif;
+    --font-family-special: 'Cinzel', serif;          /* labels, nav, big titles */
+    --font-family-glyph: 'Noto Sans Cuneiform', serif; /* decorative accents only */
 
     --font-size-sm: 14px;
     --font-size-md: 16px;
@@ -610,7 +609,8 @@ h4 {
 
 .hero-actions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content:center;
     gap: .75rem;
     width: 100%;
     max-width: 320px;
@@ -999,43 +999,31 @@ h4 {
         margin: 0 auto;
     }
 }
-
 /* ---------- About ---------- */
 
 .section-about {
     position: relative;
-    min-height: 100svh;
-    display: flex;
-    align-items: center;
     padding: var(--section-padding) var(--container-padding);
-    overflow: hidden;
     background: var(--color-bg);
 }
 
-.about-media {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.about-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.about-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, var(--color-bg) 0%, rgba(14, 14, 16, 0.88) 50%, rgba(14, 14, 16, 0.3) 100%);
-}
-
-.about-content {
-    position: relative;
-    z-index: 1;
+.about-inner {
     display: grid;
-    gap: var(--space-5);
-    max-width: 560px;
+    gap: var(--space-6);
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.about-head,
+.about-body,
+.about-experience,
+.about-actions {
+    min-width: 0;
+}
+
+.about-head {
+    display: grid;
+    gap: var(--space-4);
 }
 
 .about-title {
@@ -1050,14 +1038,60 @@ h4 {
     color: var(--color-text);
     font-family: var(--font-family-heading);
     font-size: var(--font-size-lg);
-    border-left: 2px solid var(--color-secondary);
+    border-left: 2px solid var(--color-primary-light);
     padding-left: var(--space-4);
 }
 
+/* photo */
+.about-media {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 420px;
+    justify-self: center;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-caption {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: grid;
+    gap: 2px;
+    padding: var(--space-7) var(--space-4) var(--space-4);
+    background: linear-gradient(to top, rgba(14, 14, 16, 0.92) 0%, rgba(14, 14, 16, 0) 100%);
+}
+
+.about-caption-name {
+    font-family: var(--font-family-special);
+    font-size: var(--font-size-lg);
+    color: var(--color-text);
+}
+
+.about-caption-role {
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-secondary-light);
+}
+
+/* experience */
 .about-experience {
-    text-align: center;
     display: grid;
     gap: var(--space-3);
+    text-align: center;
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .about-experience-lead {
@@ -1065,9 +1099,10 @@ h4 {
 }
 
 .about-experience-highlight {
-    color: var(--color-gold);
-    font-family: var(--font-family-heading);
+    color: var(--color-primary-light);
+    font-family: var(--font-family-special);
     font-size: var(--font-size-xl);
+    margin: 0 10px;
     font-weight: 700;
 }
 
@@ -1097,12 +1132,57 @@ h4 {
     background: var(--color-primary-light);
 }
 
+.about-body {
+    display: grid;
+    gap: var(--space-4);
+}
+
 .about-actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
 }
 
+.about-actions .button {
+    flex: 1 1 200px;
+}
+
+/* desktop: two columns, photo on the right */
+@media (min-width: 1024px) {
+    .about-inner {
+        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-areas:
+            'head       media'
+            'experience media'
+            'body       media'
+            'actions    media';
+        column-gap: var(--space-8);
+        row-gap: var(--space-5);
+        align-content: center;
+        min-height: 80svh;
+    }
+
+    .about-head       { grid-area: head; align-self: end; }
+    .about-experience { grid-area: experience; text-align: left; }
+    .about-body       { grid-area: body; }
+    .about-actions    { grid-area: actions; align-self: start; }
+
+    .about-media {
+        grid-area: media;
+        align-self: center;
+        justify-self: end;
+        max-width: none;
+        max-height: 80svh;
+    }
+
+    .about-experience-list {
+        justify-content: flex-start;
+    }
+
+    .about-actions .button {
+        flex: 0 0 auto;
+    }
+}
 /* ---------- Audience & Reach ---------- */
 
 .stats-list {
@@ -1874,34 +1954,6 @@ h4 {
         grid-column: 1 / -1;
     }
 
-    .section-about {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-        gap: var(--space-8);
-        max-width: none;
-        padding: var(--section-padding) max(var(--container-padding), calc((100vw - var(--container-max)) / 2));
-    }
-
-    .about-media {
-        position: relative;
-        grid-column: 2;
-        grid-row: 1;
-        height: 70svh;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-    }
-
-    .about-gradient {
-        background: linear-gradient(to right, var(--color-bg) 0%, rgba(14, 14, 16, 0) 40%);
-    }
-
-    .about-content {
-        grid-column: 1;
-        grid-row: 1;
-        max-width: none;
-    }
-
     .stats-list {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -1962,47 +2014,24 @@ h4 {
     }
 }
 
-/* ---------- Reduced Motion ---------- */
-/* 
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    .expertise-orbit,
-    .brands-marquee {
-        animation: none;
-    }
-
-    .stage-layer {
-        transition: none;
-    }
-
-    .button,
-    .gallery-button,
-    .orbit-button,
-    .collab-card,
-    .project-card {
-        transition: none;
-    }
-} */
-
-
-
 .scene-text {
     margin: 0;
     max-width: 16em;
     font-family: var(--font-family-special);
-    font-weight: 400;
-    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
     text-wrap: balance;
-    color: black;
-    -webkit-text-stroke: 1px var(--color-secondary);
-    text-shadow: 0 0 8px #00f0ff, 0 0 24px var(--color-secondary), 0 0 30px #7b2ff7;
-    animation: pulse 4s ease-in-out infinite alternate;
+    color: var(--color-secondary-light);
+    text-shadow: 0 2px 0 var(--color-bg), 0 0 24px rgba(203, 155, 55, 0.35), 0 4px 30px rgba(0, 0, 0, 0.8);
+    animation: glow 5s ease-in-out infinite alternate;
 }
-@keyframes pulse {
-    to { -webkit-text-stroke-color: var(--color-primary-light); text-shadow: 0 0 8px var(--color-secondary), 0 0 24px var(--color-primary-light), 0 0 60px #7b2ff7; }
+
+@keyframes glow {
+    to {
+        color: var(--color-secondary);
+        text-shadow: 0 2px 0 var(--color-gold), 0 0 32px rgba(226, 207, 125, 0.55), 0 4px 30px rgba(0, 0, 0, 0.8);
+    }
 }
 
 .liquid-text {
@@ -2013,10 +2042,17 @@ h4 {
     text-wrap: balance;
     -webkit-text-stroke: 1px #fff3b0;
     color: transparent;
-    background: linear-gradient(110deg, #b8860b, #ffe27a, #fff8dc, #d4a017, #b8860b) 0 0 / 300% 100%;
+    background: linear-gradient(110deg, var(--color-primary-light), var(--color-primary-light), #fff8dc, #d4a017, var(--color-primary-light)) 0 0 / 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     animation: flow 7s linear infinite;
     text-shadow: 0 2px 40px rgba(0, 0, 0, .65);
 }
 @keyframes flow { to { background-position: 300% 0; } }
+
+
+.hero-actions a {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.027);
+}

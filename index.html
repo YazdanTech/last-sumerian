@@ -18,11 +18,11 @@
 
   <!-- font and stuff -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Gilda+Display&family=Manrope:wght@200..800&family=Noto+Sans+Old+Persian&family=VT323&display=swap"
-    rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Gilda+Display&family=Manrope:wght@200..800&family=Noto+Sans+Cuneiform&display=swap"
+  rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -87,14 +87,33 @@
           </div>
           <div class="hero-gradient" aria-hidden="true"></div>
 
-          <!-- 0s → 4s -->
-          <div class="scene scene-1" data-scene="1">
-            <p class="scene-text" data-split>Every great story begins as a world.</p>
+         <!-- 1.5s → 24.8s : 7 scenes -->
+          <div class="scene scene-1" data-scene="1" data-fx="a">
+            <p class="scene-text" data-split>Before cinema had limits.</p>
           </div>
 
-          <!-- 8s → 14s -->
-          <div class="scene scene-2" data-scene="2" aria-hidden="true">
-            <p class="scene-text">Carved in clay.<br>Written in light.</p>
+          <div class="scene scene-2" data-scene="2" data-fx="b" aria-hidden="true">
+            <p class="scene-text">A story older<br>than civilization.</p>
+          </div>
+
+          <div class="scene scene-1" data-scene="3" data-fx="a">
+            <p class="scene-text" data-split>Imagination, unbound.</p>
+          </div>
+
+          <div class="scene scene-2" data-scene="4" data-fx="b" aria-hidden="true">
+            <p class="scene-text">AI is the instrument.<br>Not the storyteller.</p>
+          </div>
+
+          <div class="scene scene-1" data-scene="5" data-fx="a">
+            <p class="scene-text" data-split>Original worlds. Original films.</p>
+          </div>
+
+          <div class="scene scene-2" data-scene="6" data-fx="b" aria-hidden="true">
+            <p class="scene-text">From one idea<br>to an entire universe.</p>
+          </div>
+
+          <div class="scene scene-1" data-scene="7" data-fx="a">
+            <p class="scene-text" data-split>Built for partners who think bigger.</p>
           </div>
 
           <!-- 22s → end -->
@@ -108,14 +127,14 @@
             <div class="hero-actions" data-reveal data-actions>
               <div class="special-btn-container">
                 <a class="button button-primary" href="https://www.youtube.com/@meysamderees" target="_blank"
-                  rel="noopener">Watch on YouTube</a>
+                  rel="noopener">Expertise</a>
                 <div class="first-line"></div>
                 <div class="second-line"></div>
                 <div class="third-line"></div>
               </div>
               <div class="special-btn-container special-btn-container-2">
                 <a class="button button-secondary" href="https://www.youtube.com/@meysamderees" target="_blank"
-                  rel="noopener">Go to Details</a>
+                  rel="noopener">Contact us</a>
                 <div class="first-line"></div>
                 <div class="second-line"></div>
                 <div class="third-line"></div>
@@ -204,19 +223,25 @@
 
     <!-- BETWEEN: productions to about -->
     <div class="section-transition" data-stage="about-transition" aria-hidden="true"></div>
-
     <!-- ABOUT THE STUDIO -->
     <section class="section section-about" id="about" aria-labelledby="about-title">
-      <div class="about-media">
-        <img class="about-image" src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"
-          alt="Meysam Deris, founder of Last Sumerian" loading="lazy">
-        <div class="about-gradient" aria-hidden="true"></div>
-      </div>
-      <div class="about-content">
-        <h2 class="section-title about-title" id="about-title">About the Studio</h2>
-        <p class="about-text">Last Sumerian is a Dubai-based independent cinematic studio founded in 2025 by filmmaker
-          and visual artist Meysam Deris. We create original films, science fiction series, and immersive storytelling
-          experiences.</p>
+      <div class="about-inner">
+
+        <header class="about-head">
+          <h2 class="section-title about-title" id="about-title">About the Studio</h2>
+          <p class="about-text">Last Sumerian is a Dubai-based independent cinematic studio founded in 2025 by filmmaker
+            and visual artist Meysam Deris. We create original films, science fiction series, and immersive storytelling
+            experiences.</p>
+        </header>
+
+        <figure class="about-media">
+          <img class="about-image" src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"
+            alt="Meysam Deris, founder of Last Sumerian" loading="lazy">
+          <figcaption class="about-caption">
+            <span class="about-caption-name">Meysam Deris</span>
+            <span class="about-caption-role">Founder · Filmmaker &amp; Visual Artist</span>
+          </figcaption>
+        </figure>
 
         <div class="about-experience">
           <p class="about-experience-lead">With <span class="about-experience-highlight">15+ years</span> in:</p>
@@ -227,20 +252,22 @@
           </ul>
         </div>
 
-        <p class="about-text">we combine human vision with AI to build cinematic worlds without limits.</p>
-        <p class="about-text about-text-emphasis">AI is not our storyteller. It is the instrument that lets us tell
-          stories once impossible to produce independently.</p>
-        <p class="about-text">We develop original IP and cinematic universes for global audiences, and partner with
-          studios, platforms, and brands as a creative development partner. <a class="link-inline" href="./about/">Our
-            Full Story →</a></p>
+        <div class="about-body">
+          <p class="about-text">we combine human vision with AI to build cinematic worlds without limits.</p>
+          <p class="about-text about-text-emphasis">AI is not our storyteller. It is the instrument that lets us tell
+            stories once impossible to produce independently.</p>
+          <p class="about-text">We develop original IP and cinematic universes for global audiences, and partner with
+            studios, platforms, and brands as a creative development partner. <a class="link-inline" href="./about/">Our
+              Full Story →</a></p>
+        </div>
 
         <div class="about-actions">
           <a class="button button-primary" href="#original-productions">View Our Work</a>
           <a class="button button-secondary" href="#collaborations">Partner With Us</a>
         </div>
+
       </div>
     </section>
-
     <!-- AUDIENCE & REACH -->
     <section class="section section-audience" id="audience" aria-labelledby="audience-title">
       <h2 class="section-title" id="audience-title">Audience &amp; Reach</h2>
@@ -393,14 +420,17 @@
               and digital entertainment.</p>
             <ul class="expertise-orbit">
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
-                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Original IP concept 1" loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class=" orbit-image"
+                  src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Original IP concept 1"
+                  loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
-                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Original IP concept 2" loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class=" orbit-image"
+                  src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Original IP concept 2"
+                  loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
-                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Original IP concept 3" loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class=" orbit-image"
+                  src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Original IP concept 3"
+                  loading="lazy"></button></li>
             </ul>
             <a class="button button-primary expertise-cta" href="./contact/?service=original-ip">Begin Your IP Creation
               Journey</a>
@@ -415,17 +445,17 @@
               and story treatments.</p>
             <ul class="expertise-orbit">
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
-                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Story development concept 1"
-                    loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class=" orbit-image"
+                  src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Story development concept 1"
+                  loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
-                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Story development concept 2"
-                    loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class=" orbit-image"
+                  src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Story development concept 2"
+                  loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
-                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class="orbit-image"
-                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Story development concept 3"
-                    loading="lazy"></button></li>
+                  data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg><img class=" orbit-image"
+                  src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Story development concept 3"
+                  loading="lazy"></button></li>
             </ul>
             <a class="button button-primary expertise-cta" href="./contact/?service=story-development">Develop Your
               Story</a>
@@ -441,13 +471,16 @@
             <ul class="expertise-orbit">
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
                   data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"><img class="orbit-image"
-                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Concept art 1" loading="lazy"></button></li>
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Concept art 1"
+                    loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
                   data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"><img class="orbit-image"
-                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Concept art 2" loading="lazy"></button></li>
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Concept art 2"
+                    loading="lazy"></button></li>
               <li class="expertise-orbit-item"><button class="orbit-button" type="button"
                   data-full-src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg"><img class="orbit-image"
-                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Concept art 3" loading="lazy"></button></li>
+                    src="./assets/images/bb458681be4c2837b8297afd4e58848d.jpg" alt="Concept art 3"
+                    loading="lazy"></button></li>
             </ul>
             <a class="button button-primary expertise-cta" href="./contact/?service=visual-development">Visualize Your
               Idea</a>

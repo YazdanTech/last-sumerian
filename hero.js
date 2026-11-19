@@ -2,8 +2,7 @@
   const track = document.querySelector('[data-hero-track]');
   const stage = document.querySelector('[data-hero-stage]');
   const video = document.querySelector('[data-hero-video]');
-  const scene1 = document.querySelector('[data-scene="1"]');
-  const scene2 = document.querySelector('[data-scene="2"]');
+  const scenes = [...document.querySelectorAll('[data-scene]')];
   const content = document.querySelector('[data-hero-content]');
   const items = [...document.querySelectorAll('[data-reveal]')];
   const title = document.querySelector('[data-title]');
@@ -23,40 +22,51 @@
 
   const SAND = [243, 230, 200], GOLD = [217, 164, 65], RUST = [176, 84, 38];
 
-  /* ---------- split scene 1 into words ---------- */
+  /* ---------- split scenes into words ---------- */
   document.querySelectorAll('[data-split]').forEach(el => {
     el.innerHTML = el.textContent.trim().split(/\s+/)
       .map((w, i) => `<span class="w" style="--i:${i}">${w}</span>`).join(' ');
   });
 
   /* ---------- timeline (seconds of video) ---------- */
+  const STARTS = [1.5, 4.9, 8.3, 11.7, 15.1, 18.5, 21.9]; // start of each text
+  const LEN = 2.9;                                        // length of each text
+
   const T = {
-    s1Out: [2.9, 4.0],      // text 1 fades/shifts colour, gone at 4s
-    s2In:  [8.0, 10.8],     // text 2 flies in from far
-    s2Out: [12.8, 14.0],    // text 2 passes the camera, gone at 14s
     shade: [20, 23],
-    reveal: { start: 22, stagger: 0.55, dur: 1.3 }
+    reveal: { start: 24.6, stagger: 0.55, dur: 1.3 }
   };
 
   function hide(el, hidden) { el.style.visibility = hidden ? 'hidden' : 'visible'; }
 
-  function render(t) {
-    /* scene 1 */
-    const p1 = easeInOut(seg(t, ...T.s1Out));
-    const col = p1 < .5 ? mix(SAND, GOLD, p1 * 2) : mix(GOLD, RUST, (p1 - .5) * 2);
-    scene1.style.opacity = 1 - p1;
-    scene1.style.transform = `translate3d(0, ${-p1 * 24}px, 0) scale(${1 + p1 * .06})`;
-    scene1.style.color = `rgb(${col})`;
-    hide(scene1, p1 >= 1);
+  function renderScene(el, s, t) {
+    const e = s + LEN;
 
-    /* scene 2 */
-    const inn = easeOut(seg(t, ...T.s2In));
-    const out = easeIn(seg(t, ...T.s2Out));
-    const scale = (0.06 + 0.94 * inn) * (1 + out * 8);
-    const op = clamp(inn * 2.4) * (1 - seg(t, 13.0, 14.0));
-    scene2.style.opacity = op;
-    scene2.style.transform = `scale(${scale})`;
-    hide(scene2, op < .002);
+    if (el.dataset.fx === 'a') {
+      /* fade in, hold, then shift colour / rise / fade out */
+      const inP = easeOut(seg(t, s, s + 0.9));
+      const p1 = easeInOut(seg(t, e - 1.1, e));
+      const col = p1 < .5 ? mix(SAND, GOLD, p1 * 2) : mix(GOLD, RUST, (p1 - .5) * 2);
+      const op = inP * (1 - p1);
+      el.style.opacity = op;
+      el.style.transform = `translate3d(0, ${(1 - inP) * 20 - p1 * 24}px, 0) scale(${1 + p1 * .06})`;
+      el.style.color = `rgb(${col})`;
+      hide(el, op < .002);
+    } else {
+      /* fly in from far, pass the camera */
+      const inn = easeOut(seg(t, s, s + 1.9));
+      const out = easeIn(seg(t, s + 1.9, e));
+      const scale = (0.06 + 0.94 * inn) * (1 + out * 8);
+      const op = clamp(inn * 2.4) * (1 - seg(t, s + 2.0, e));
+      el.style.opacity = op;
+      el.style.transform = `scale(${scale})`;
+      hide(el, op < .002);
+    }
+  }
+
+  function render(t) {
+    /* text scenes */
+    scenes.forEach((el, i) => renderScene(el, STARTS[i], t));
 
     /* final content, staggered */
     items.forEach((el, i) => {
@@ -66,7 +76,7 @@
       el.style.transform = `translate3d(0, ${(1 - p) * 28}px, 0)`;
       if (el === title) el.style.letterSpacing = `${(0.34 - 0.22 * p).toFixed(3)}em`;
     });
-    actions.inert = seg(t, T.reveal.start + 4 * T.reveal.stagger, 26) < .6;
+    actions.inert = seg(t, T.reveal.start + 4 * T.reveal.stagger, 28) < .6;
     content.style.pointerEvents = 'none';
     actions.style.pointerEvents = actions.inert ? 'none' : 'auto';
 
