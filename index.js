@@ -35,7 +35,7 @@
           if (entry.isIntersecting) setActiveLayer(entry.target.dataset.stage);
         });
       },
-      { rootMargin: '-50% 0px -50% 0px', threshold: 0 }
+      { rootMargin: '-80% 0px -20% 0px', threshold: 0 }
     );
 
     triggers.forEach((trigger) => observer.observe(trigger));
@@ -66,6 +66,9 @@
     const scroller = $('.productions-scroller');
     if (!section || !scroller) return;
 
+    const SNAP_VISIBLE = 0.6; // snap only when 60%+ of the section is in view
+    const SETTLE_MS = 150;    // wait for scrolling to settle before snapping
+
     let lastY = window.scrollY;
     let dir = 0; // 1 = down, -1 = up
     let snapping = false;
@@ -77,8 +80,11 @@
 
       const vh = window.innerHeight;
       const r = section.getBoundingClientRect();
+      if (Math.abs(r.top) < 2) return; // already aligned
+
       const visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
-      if (visible <= vh * 0.1 || Math.abs(r.top) < 2) return;
+      const needed = Math.min(r.height, vh) * SNAP_VISIBLE;
+      if (visible < needed) return; // not enough of the section in view
 
       const fromTop = r.top > 0 && dir === 1;
       const fromBottom = r.top < 0 && dir === -1;
@@ -89,12 +95,12 @@
         behavior: prefersReducedMotion ? 'auto' : 'smooth',
         block: 'start'
       });
-      setTimeout(() => { snapping = false; }, 700);
+      setTimeout(() => { snapping = false; }, 800);
     };
 
     const schedule = () => {
       clearTimeout(timer);
-      timer = setTimeout(check, 90);
+      timer = setTimeout(check, SETTLE_MS);
     };
 
     window.addEventListener('scroll', () => {
@@ -297,8 +303,8 @@
         const top = window.scrollY + rect.top;
         const bottom = window.scrollY + rect.bottom;
         const y = btn.dataset.expertiseNav === 'up'
-          ? top - window.innerHeight   // section top at bottom of screen
-          : bottom;                    // section bottom at top of screen
+          ? top - window.innerHeight        // section top at bottom of screen
+          : bottom - window.innerHeight;    // section bottom at bottom of screen
         window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
       });
     });

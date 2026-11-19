@@ -1087,14 +1087,29 @@ h4 {
 
 /* experience */
 .about-experience {
+    position: relative;
     display: grid;
     gap: var(--space-3);
     text-align: center;
-    padding: var(--space-5) 0;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-5);
 }
 
+
+.about-experience::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent 20%,
+        var(--color-primary-light),
+        transparent 80%
+    );
+}
+
+.about-experience::after { bottom: 0; }
 .about-experience-lead {
     font-size: var(--font-size-lg);
 }
