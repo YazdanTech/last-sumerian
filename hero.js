@@ -22,6 +22,12 @@
 
   const SAND = [243, 230, 200], GOLD = [217, 164, 65], RUST = [176, 84, 38];
 
+  let max = 1;
+  const measure = () => { max = track.offsetHeight - innerHeight; };
+  // in readScroll: const p = clamp(-track.getBoundingClientRect().top / max);
+  addEventListener('resize', () => { measure(); readScroll(); });
+  measure();
+
   /* ---------- split scenes into words ---------- */
   document.querySelectorAll('[data-split]').forEach(el => {
     el.innerHTML = el.textContent.trim().split(/\s+/)
@@ -41,6 +47,11 @@
 
   function renderScene(el, s, t) {
     const e = s + LEN;
+    if (t < s || t > e) {
+      if (el._on !== false) { el.style.opacity = 0; el.style.visibility = 'hidden'; el._on = false; }
+      return;
+    }
+    el._on = true;
 
     if (el.dataset.fx === 'a') {
       /* fade in, hold, then shift colour / rise / fade out */
@@ -49,14 +60,14 @@
       const col = p1 < .5 ? mix(SAND, GOLD, p1 * 2) : mix(GOLD, RUST, (p1 - .5) * 2);
       const op = inP * (1 - p1);
       el.style.opacity = op;
-      el.style.transform = `translate3d(0, ${(1 - inP) * 20 - p1 * 24}px, 0) scale(${1 + p1 * .06})`;
+      el.style.transform = `translate3d(0, ${(1 - inP) * 20 - p1 * 24}px, le(${1 + p1 * .06})`;
       el.style.color = `rgb(${col})`;
       hide(el, op < .002);
     } else {
       /* fly in from far, pass the camera */
       const inn = easeOut(seg(t, s, s + 1.9));
       const out = easeIn(seg(t, s + 1.9, e));
-      const scale = (0.06 + 0.94 * inn) * (1 + out * 8);
+      const scale = (0.06 + 0.94 * inn) * (1 + out * 3);
       const op = clamp(inn * 2.4) * (1 - seg(t, s + 2.0, e));
       el.style.opacity = op;
       el.style.transform = `scale(${scale})`;
@@ -72,6 +83,8 @@
     items.forEach((el, i) => {
       const s = T.reveal.start + i * T.reveal.stagger;
       const p = easeOut(seg(t, s, s + T.reveal.dur));
+      if (el._p === p) return;
+      el._p = p;
       el.style.opacity = p;
       el.style.transform = `translate3d(0, ${(1 - p) * 28}px, 0)`;
       if (el === title) el.style.letterSpacing = `${(0.34 - 0.22 * p).toFixed(3)}em`;
@@ -99,7 +112,7 @@
 
   function frame() {
     const diff = target - current;
-    current = Math.abs(diff) < 0.002 ? target : current + diff * 0.05;
+    current = Math.abs(diff) < 0.002 ? target : current + diff * 0.1;
 
     if (!video.seeking && Math.abs(video.currentTime - current) > 0.025) {
       video.currentTime = current;
@@ -113,7 +126,7 @@
 
   /* iOS/Safari: unlock seeking on a muted video */
   function unlock() {
-    video.play().then(() => video.pause()).catch(() => {});
+    video.play().then(() => video.pause()).catch(() => { });
     video.addEventListener('play', () => video.pause());
   }
 

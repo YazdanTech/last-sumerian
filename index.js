@@ -199,7 +199,7 @@
 
   const formatCount = (value, keepPlus) => {
     let text;
-    if (value >= 1000000) {
+    if (value >= 999500) {
       text = `${parseFloat((value / 1000000).toFixed(1))}M`;
     } else if (value >= 1000) {
       text = `${Math.round(value / 1000)}K`;
@@ -283,7 +283,7 @@
         // border: transparent first, fades to primary-light as next slide covers it
         slide.style.border = "1px solid color-mix(in srgb, var(--color-secondary) " + (p * 100) + "%, transparent)";
         // next (current) slide casts a shadow onto the previous slide
-        next.style.boxShadow = `0 30px 50px var(--color-primary-light)`;
+        next.style.boxShadow = `0 30px 50px var(--color-bg)`;
       });
     };
 
