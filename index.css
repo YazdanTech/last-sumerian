@@ -1198,13 +1198,22 @@ h4 {
         flex: 0 0 auto;
     }
 }
-/* ---------- Audience & Reach ---------- */.section-audience {
+/* ---------- Audience & Reach ---------- */
+
+.section-audience {
     overflow: clip;
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: 130vh;
+    min-height: 130svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.audience-title {
+    text-align: center;
+    backdrop-filter: blur(3px);
+    margin-bottom: 3rem;
+    z-index: 2;
 }
 
 .stats-list {
@@ -1253,10 +1262,10 @@ h4 {
 }
 
 .stat-item::before {
-    inset: -30vh -1px;
+    inset: -40vh -1px;
     background-image:
-        linear-gradient(to bottom, transparent, var(--color-border) 30vh, var(--color-border) calc(100% - 30vh), transparent),
-        linear-gradient(to bottom, transparent, var(--color-border) 30vh, var(--color-border) calc(100% - 30vh), transparent);
+        linear-gradient(to bottom, transparent, var(--color-border) 40vh, var(--color-border) calc(100% - 40vh), transparent),
+        linear-gradient(to bottom, transparent, var(--color-border) 40vh, var(--color-border) calc(100% - 40vh), transparent);
     background-size: 1px 100%, 1px 100%;
     background-position: left top, right top;
 }
@@ -1955,18 +1964,34 @@ h4 {
     padding: var(--space-6) var(--space-5);
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    transition: var(--transition-normal);
+    transition: var(--transition-slow);
 }
 
 .collab-card:hover {
-    border-color: var(--color-secondary);
+    border-color: var(--color-primary-light);
     transform: translateY(-4px);
+}
+
+.collab-card:hover:first-child .collab-list-item::before {
+    border-radius: 0;
+    border-color: var(--color-secondary);
+    transform: rotate(135deg);
+}
+.collab-card:hover .collab-list-item::before {
+    border-radius: var(--radius-full);
+    border-color: var(--color-secondary);
+    transform: rotate(135deg);
+}
+.collab-card:hover:last-child .collab-list-item::before {
+    border-radius: 0;
+    border-color: var(--color-secondary);
+    transform: scale(1.4) rotate(45deg);
 }
 
 .collab-title {
     font-size: var(--font-size-lg);
-    color: var(--color-secondary-light);
+    font-family: var(--font-family-heading);
+    color: var(--color-text);
     margin-bottom: var(--space-4);
 }
 
@@ -1985,11 +2010,12 @@ h4 {
     content: '';
     position: absolute;
     top: 0.65em;
+    transition: var(--transition-slow);
     left: 0;
     width: 8px;
     height: 8px;
-    border-radius: var(--radius-full);
-    background: var(--color-primary-light);
+    border: 1px solid var(--color-primary-light);
+    transform: rotate(45deg);
 }
 
 .collab-actions {
@@ -2204,21 +2230,79 @@ h4 {
     background: linear-gradient(110deg, var(--color-primary-light), var(--color-primary-light), #fff8dc, #d4a017, var(--color-primary-light)) 0 0 / 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: flow 7s linear infinite;
+    animation: flow 12s linear infinite;
 }
 
-.liquid-text {
+/* 1. Lapis & Gold – Sumerian royal */
+.liquid-text-one {
     margin: 0;
     font-family: var(--font-family-head);
     font-weight: 400;
     line-height: 1.15;
     text-wrap: balance;
     color: transparent;
-    background: linear-gradient(110deg, var(--color-primary-light), var(--color-primary-light), #fff8dc, #d4a017, var(--color-primary-light)) 0 0 / 300% 100%;
+    background: linear-gradient(110deg, #1e3a8a, #3b5bdb, #f5e6a8, #d4a017, #1e3a8a) 0 0 / 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: flow 7s linear infinite;
+    animation: flow 12s linear infinite;
 }
+
+/* 2. Burnished Bronze – ancient metal */
+.liquid-text-two {
+    margin: 0;
+    font-family: var(--font-family-head);
+    font-weight: 400;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: transparent;
+    background: linear-gradient(110deg, #8c5a2b, #b87333, #ffd9a0, #e0a458, #8c5a2b) 0 0 / 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: flow 12s linear infinite;
+}
+
+/* 3. Desert Sand & Ivory – blends with pyramids */
+.liquid-text-three {
+    margin: 0;
+    font-family: var(--font-family-head);
+    font-weight: 400;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: transparent;
+    background: linear-gradient(110deg, #e8d5a3, #f6ead0, #ffffff, #d9b872, #e8d5a3) 0 0 / 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: flow 12s linear infinite;
+}
+
+/* 4. Turquoise & Gold – Mesopotamian glaze */
+.liquid-text-four {
+    margin: 0;
+    font-family: var(--font-family-head);
+    font-weight: 400;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: transparent;
+    background: linear-gradient(110deg, #1fa8a0, #5fe0d4, #fff3c4, #e0b030, #1fa8a0) 0 0 / 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: flow 12s linear infinite;
+}
+
+/* 5. Oxblood & Ember – dramatic, cinematic */
+.liquid-text-five {
+    margin: 0;
+    font-family: var(--font-family-head);
+    font-weight: 400;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: transparent;
+    background: linear-gradient(110deg, #9b2c1f, #d4552b, #ffd7a8, #f2a33a, #9b2c1f) 0 0 / 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: flow 12s linear infinite;
+}
+
 @keyframes flow { to { background-position: 300% 0; } }
 
 
