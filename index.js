@@ -272,15 +272,13 @@
 
     const update = () => {
       ticking = false;
-      if (reduced) return;
       const vh = window.innerHeight;
+      const tops = slides.map(s => s.getBoundingClientRect().top);
       slides.forEach((slide, i) => {
-        const next = slides[i + 1];
-        if (!next) return;
-        const p = Math.min(1, Math.max(0, 1 - next.getBoundingClientRect().top / vh));
+        if (i === slides.length - 1) return;
+        const p = Math.min(1, Math.max(0, 1 - tops[i + 1] / vh));
         slide.style.transform = `scale(${1 - p * 0.15})`;
-        slide.style.filter = `brightness(${1 - p * 0.7})`;
-        slide.style.border = "1px solid color-mix(in srgb, var(--color-secondary) " + (p * 100) + "%, transparent)";
+        slide.style.setProperty('--dim', p);
       });
     };
 

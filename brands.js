@@ -23,7 +23,7 @@
       const cv = document.createElement('canvas');
       cv.width = ww; cv.height = hh;
       const c = cv.getContext('2d');
-      c.filter = 'grayscale(1) brightness(2)';
+      c.filter = 'grayscale(0) brightness(2)';
       c.drawImage(im, 0, 0, ww, hh);
       item.cv = cv;
     };
@@ -128,7 +128,9 @@
       ctx.lineWidth = 1 + t * 2.5;
       hexagon(rad);
       const id = i + cycle; // stable ring id
-      ctx.globalAlpha = alpha;
+      const u = Math.log(rad / innerR) / Math.log(maxR * 1.5 / innerR); // 0 -> 1 progress of movement
+      const PEAK = 0.5; // logos are 100% opaque at this point
+      ctx.globalAlpha = Math.min(1, u / PEAK);
       drawLogos(rad, id);
     }
     ctx.restore();
