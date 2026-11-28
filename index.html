@@ -15,6 +15,7 @@
   <meta property="og:image" content="./assets/images/og-cover.jpg">
   <meta name="theme-color" content="#000000">
   <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./footer.css">
 
   <!-- font and stuff -->
 
@@ -368,7 +369,8 @@
 
       <div class="expertise-scroller">
 
-        <article class="expertise-slide" id="expertise-worldbuilding" style="border-top:1px solid var(--color-secondary)">
+        <article class="expertise-slide" id="expertise-worldbuilding"
+          style="border-top:1px solid var(--color-secondary)">
           <div class="expertise-shapes" aria-hidden="true">
             <span class="s1"></span><span class="s2"></span><span class="s3"></span>
           </div>
@@ -600,19 +602,37 @@
 
     <!-- BETWEEN: brands marquee -->
     <div class="section-transition section-transition-brands" data-stage="brands-transition">
+      <canvas class="brands-hex-bg" aria-hidden="true"></canvas>
       <h2 class="visually-hidden">Brands we have worked with</h2>
       <ul class="brands-marquee">
-        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/brand-1.svg"
-            alt="Brand 1" loading="lazy"></li>
-        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/brand-2.svg"
-            alt="Brand 2" loading="lazy"></li>
-        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/brand-3.svg"
-            alt="Brand 3" loading="lazy"></li>
-        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/brand-4.svg"
-            alt="Brand 4" loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/n1.jpg" alt="n1"
+            loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/n2.jpg" alt="n2"
+            loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/n3.jpg" alt="n3"
+            loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/n4.jpg" alt="n4"
+            loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/n5.jpg" alt="n5"
+            loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/n6.jpg" alt="n6"
+            loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/n7.jpg" alt="n7"
+            loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo" src="./assets/images/brands/n8.jpg" alt="n8"
+            loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo"
+            src="./assets/images/brands/photo_1_2025-10-24_11-56-23.jpg" alt="Photo 1" loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo"
+            src="./assets/images/brands/photo_2_2025-10-24_11-56-23.jpg" alt="Photo 2" loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo"
+            src="./assets/images/brands/photo_3_2025-10-24_11-56-23.jpg" alt="Photo 3" loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo"
+            src="./assets/images/brands/photo_4_2025-10-24_11-56-23.jpg" alt="Photo 4" loading="lazy"></li>
+        <li class="brands-marquee-item"><img class="brands-marquee-logo"
+            src="./assets/images/brands/photo_5_2025-10-24_11-56-23.jpg" alt="Photo 5" loading="lazy"></li>
       </ul>
     </div>
-
     <!--  IONS -->
     <section class="section section-collaborations" id="collaborations" aria-labelledby="collaborations-title">
       <h2 class="section-title" id="collaborations-title">Collaborate. Sponsor. Invest.</h2>
@@ -661,6 +681,83 @@
       </div>
     </section>
 
+    <footer class="site-footer" id="footer">
+      <div class="footer-main">
+
+        <div class="footer-brand">
+          <span class="footer-glyph" aria-hidden="true">𒀭</span>
+          <h2 class="footer-heading">You Visualize,<br><span>We Materialize.</span></h2>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <h3 class="footer-label">Explore</h3>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="#hero">Hero</a></li>
+            <li><a href="#original-production">Original Production</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#creative-development">Creative Development</a></li>
+            <li><a href="#projects-in-development">Projects in Development</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-connect">
+          <h3 class="footer-label">Connect</h3>
+          <ul>
+            <li>
+              <a href="mailto:hello@lastsumerian.com">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+                hello@lastsumerian.com
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/lastsumerian" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" />
+                </svg>
+                Last Sumerian
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/meysamderis" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" />
+                </svg>
+                Meysam Deris
+              </a>
+            </li>
+            <li>
+              <a href="https://youtube.com/@lastsumerian" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2.5" y="5" width="19" height="14" rx="4" />
+                  <path d="m10 9 5 3-5 3z" fill="currentColor" />
+                </svg>
+                AI YouTube
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Last Sumerian. All rights reserved.</p>
+        <p>Crafted with AI. Directed by humans.</p>
+      </div>
+    </footer>
+
     <!-- PRESS & MEDIA -->
     <!-- <section class="section section-press" id="press" aria-labelledby="press-title">
       <h2 class="section-title" id="press-title">Press &amp; Media</h2>
@@ -692,6 +789,7 @@
 
   <script src="./index.js" defer></script>
   <script src="./hero.js" defer></script>
+  <script src="./brands.js" defer></script>
 </body>
 
 </html>

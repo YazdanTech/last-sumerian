@@ -1264,8 +1264,8 @@ h4 {
 .stat-item::before {
     inset: -40vh -1px;
     background-image:
-        linear-gradient(to bottom, transparent, var(--color-border) 40vh, var(--color-border) calc(100% - 40vh), transparent),
-        linear-gradient(to bottom, transparent, var(--color-border) 40vh, var(--color-border) calc(100% - 40vh), transparent);
+        linear-gradient(to bottom, transparent, var(--color-primary-light) 40vh, var(--color-primary-light) calc(100% - 40vh), transparent),
+        linear-gradient(to bottom, transparent, var(--color-primary-light) 40vh, var(--color-primary-light) calc(100% - 40vh), transparent);
     background-size: 1px 100%, 1px 100%;
     background-position: left top, right top;
 }
@@ -1274,8 +1274,8 @@ h4 {
 .stat-item::after {
     inset: -1px -100vw;
     background-image:
-        linear-gradient(to right, transparent, var(--color-border) 100vw, var(--color-border) calc(100% - 100vw), transparent),
-        linear-gradient(to right, transparent, var(--color-border) 100vw, var(--color-border) calc(100% - 100vw), transparent);
+        linear-gradient(to right, transparent, var(--color-primary-light) 100vw, var(--color-primary-light) calc(100% - 100vw), transparent),
+        linear-gradient(to right, transparent, var(--color-primary-light) 100vw, var(--color-primary-light) calc(100% - 100vw), transparent);
     background-size: 100% 1px, 100% 1px;
     background-position: left top, left bottom;
 }
@@ -1912,33 +1912,24 @@ h4 {
 /* ---------- Brands Marquee ---------- */
 
 .section-transition-brands {
-    min-height: 60svh;
+    position: relative;
+    min-height: 100svh;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: var(--color-bg);
+}
+
+.brands-hex-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
 .brands-marquee {
-    display: flex;
-    align-items: center;
-    gap: var(--space-8);
-    width: max-content;
-    animation: marquee-scroll 30s linear infinite;
-}
-
-.brands-marquee-item {
-    flex: 0 0 auto;
-}
-
-.brands-marquee-logo {
-    height: 48px;
-    width: auto;
-    opacity: 0.8;
-    filter: grayscale(1) brightness(2);
-    transition: var(--transition-normal);
-}
-
-.brands-marquee-logo:hover {
-    opacity: 1;
-    filter: none;
+    display: none;
 }
 
 @keyframes marquee-scroll {

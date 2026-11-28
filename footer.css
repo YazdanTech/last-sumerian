@@ -1,0 +1,201 @@
+/* ---------- Footer (mobile first) ---------- */
+
+.site-footer {
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    background: var(--color-bg-alt);
+    box-shadow:
+        0 0 0 1px rgba(203, 155, 55, 0.18),
+        0 0 24px rgba(203, 155, 55, 0.1),
+        inset 0 0 24px rgba(203, 155, 55, 0.04);
+    isolation: isolate;
+}
+
+/* top gold hairline (static, free to render) */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--color-secondary),
+        transparent
+    );
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* soft glow layer: only opacity animates (GPU-cheap) */
+.site-footer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 36px rgba(203, 155, 55, 0.22);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: -1;
+    animation: footer-glow 6s ease-in-out infinite alternate;
+}
+
+@keyframes footer-glow {
+    to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-footer::after { animation: none; }
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-5) var(--space-4);
+    border-radius: var(--radius-md);
+}
+
+/* brand */
+.footer-glyph {
+    display: block;
+    margin-bottom: var(--space-3);
+    font-family: var(--font-family-glyph);
+    font-size: var(--font-size-xl);
+    color: var(--color-gold);
+    line-height: 1;
+}
+
+.footer-heading {
+    font-family: var(--font-family-heading);
+    font-weight: 400;
+    font-size: var(--font-size-xl);
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+}
+
+.footer-heading span {
+    color: var(--color-secondary-light);
+}
+
+/* labels */
+.footer-label {
+    margin-bottom: var(--space-3);
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-md);
+    font-weight: 200;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text);
+}
+
+/* lists */
+.footer-nav ul,
+.footer-connect ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-nav a,
+.footer-connect a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    transition: var(--transition-fast);
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible,
+.footer-connect a:hover,
+.footer-connect a:focus-visible {
+    color: var(--color-secondary-light);
+}
+
+.footer-connect svg {
+    flex-shrink: 0;
+    color: var(--color-primary-light);
+}
+
+.footer-nav a:focus-visible,
+.footer-connect a:focus-visible {
+    outline: 1px solid var(--color-secondary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+/* bottom row */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4) var(--space-4) var(--space-3);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (min-width: 640px) {
+    .footer-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: var(--space-6);
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-heading {
+        font-size: var(--font-size-2xl);
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+/* ---------- Laptop+ ---------- */
+
+@media (min-width: 1024px) {
+    .footer-main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: var(--space-7);
+        padding: var(--space-7) var(--space-6);
+    }
+
+    .footer-brand {
+        flex: 1.2;
+    }
+
+    .footer-nav {
+        flex: 1;
+    }
+
+    .footer-connect {
+        flex: 1;
+    }
+
+    .footer-heading {
+        font-size: var(--font-size-2xl);
+    }
+
+    .footer-nav a,
+    .footer-connect a {
+        font-size: var(--font-size-md);
+    }
+}
